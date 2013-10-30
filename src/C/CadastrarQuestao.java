@@ -17,6 +17,6 @@ public class CadastrarQuestao {
 	}
 	
 	public void gravarQuestao(String temaTxt, String QuestaoTxt){
-		//Tema tema = forum.buscaTema(temaTxt);
+		Tema tema = forum.buscaTema(temaTxt);
 	}
 }
