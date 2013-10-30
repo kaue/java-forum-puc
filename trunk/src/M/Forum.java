@@ -11,12 +11,16 @@ public class Forum {
 		
 	}
 	
-	public void buscaTema(String temaTxt){
+	public Tema buscaTema(String temaTxt){
 		int i = 0;
 		while ((i<listaTemas.length) && !listaTemas[i].equals(temaTxt)){
 			i++;
 		}
-		//CONTINUAR A PARTIR DAQUI
+		if(listaTemas[i].equals(temaTxt)) {
+			return listaTemas[i];
+		}else {
+			return null;
+		}
 	}
 	
 	public Tema[] getListaTemas(){
