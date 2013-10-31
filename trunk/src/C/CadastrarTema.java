@@ -16,7 +16,7 @@ public class CadastrarTema {
 
 	public void gravarTema(String texto){
 		Tema tema = new Tema(texto);
-		forum.add(tema);
+		forum.addTema(tema);
 	}
 
 }

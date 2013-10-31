@@ -6,29 +6,28 @@ import java.util.List;
 public class Forum {
 
 	private Tema[] listaTemas;
-	
+	private Questao[] listaQuestoes;
+
 	public Forum(){
-		
+
 	}
-	
+
+	//Tema
 	public Tema buscaTema(String temaTxt){
 		int i = 0;
-		while ((i<listaTemas.length) && !listaTemas[i].equals(temaTxt)){
+		while ((i<listaTemas.length) && !listaTemas[i].getTema().equals(temaTxt)){
 			i++;
 		}
-		if(listaTemas[i].equals(temaTxt)) {
+		if(listaTemas[i].getTema().equals(temaTxt)) {
 			return listaTemas[i];
 		}else {
 			return null;
 		}
 	}
-	
 	public Tema[] getListaTemas(){
 		return listaTemas;
 	}
-	
-	public void add(Tema tema){
-		
+	public void addTema(Tema tema){
 		if (listaTemas==null){
 			//lista vazia
 			listaTemas = new Tema[1];
@@ -42,7 +41,40 @@ public class Forum {
 			listaAuxiliar[listaTemas.length] = tema;
 			listaTemas = listaAuxiliar;
 		}
-		
 	}
-	
+
+	//Questao
+	public Questao buscaQuestao(String questaoTexto, String temaTexto){
+		//TODO
+
+		//int i = 0;
+		//while ((i<listaTemas.length) && !listaTemas[i].getTema().equals(temaTxt)){
+		//	i++;
+		//}
+		//if(listaTemas[i].getTema().equals(temaTxt)) {
+		//	return listaTemas[i];
+		//}else {
+		//	return null;
+		//}
+		return null;
+	}
+	public Questao[] getListaQuestoes(){
+		return listaQuestoes;
+	}
+	public void addQuestao(Questao questao){
+		if (listaQuestoes==null){
+			//lista vazia
+			listaQuestoes = new Questao[1];
+			listaQuestoes[0] = questao;
+		} else {
+			//lista com conteúdo
+			Questao[] listaAuxiliar = new Questao[listaTemas.length+1];
+			for (int i=0;i<listaQuestoes.length;i++){
+				listaAuxiliar[i] = listaQuestoes[i];
+			}
+			listaAuxiliar[listaQuestoes.length] = questao;
+			listaQuestoes = listaAuxiliar;
+		}
+		System.out.print(listaQuestoes.length);
+	}
 }

@@ -2,12 +2,11 @@ package V;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
-
-import java.util.Scanner;
 
 import C.CadastrarTema;
 import C.AppController;
@@ -27,14 +26,14 @@ public class CadastroDeTemas extends JFrame{
 		cadastrarTema = controle;
 		//Janela
 		setBounds(200, 200, 300, 120);
-		setTitle("JFórum 1.0");
-		//Label
+		setTitle("JFórum 1.0 - Cadastro de Temas");
+		//Label Tema
 		lbTema = new JLabel("Tema:");
 		lbTema.setBounds(0,10,100,20);
-		//TextField
+		//TextField Tema
 		txtTema = new JTextField(20);
 		txtTema.setBounds(50, 10, 200, 20);
-		//Button
+		//Button Salvar
 		btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(50, 50, 200, 20);
 		btnSalvar.addActionListener(new ActionListener() {
@@ -59,7 +58,7 @@ public class CadastroDeTemas extends JFrame{
 		if(!txtTema.getText().equals("")){
 			gravarTema(txtTema.getText());
 		}else {
-			System.out.print("Aviso: Não é possivel adicionar um tema sem texto.");
+			System.out.print("Aviso: Não é possivel adicionar um tema sem texto.\n");
 		}
 	}
 	public void gravarTema(String lTextoTema){
