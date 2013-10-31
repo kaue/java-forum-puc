@@ -21,7 +21,7 @@ public class MenuPrincipal extends JFrame{
 		appController = controle;
 
 		setBounds(200, 200, 400, 350);
-		setTitle("JFórum 1.0");
+		setTitle("JFórum 1.0 - Menu Principal");
 
 		cadastrarTema = new JButton("Cadastrar Tema");
 		cadastrarTema.setBounds(100, 90, 200, 20);
