@@ -28,6 +28,7 @@ public class CadastroDeQuestoes extends JFrame{
 		cadastrarQuestao = controle;
 
 		//Criar Array de String para Popular ComboBox
+		String[] strListaTemas = null;
 		if((listaTemas != null) &&(listaTemas.length > 0)){
 			strListaTemas = new String[listaTemas.length];
 			for (int i=0;i<listaTemas.length;i++){
@@ -36,11 +37,10 @@ public class CadastroDeQuestoes extends JFrame{
 		}else {
 			System.out.print("Aviso: Nao e possivel adicionar uma questao sem Tema.\n");
 			return;
-		}	
+		}
 		//Janela
 		setBounds(200, 200, 280, 300);
 		setTitle("JFórum 1.0 - Cadastro de Temas");
-		String[] strListaTemas;
 		//ComboBox Temas
 		comboListaTemas = new JComboBox(strListaTemas);
 		comboListaTemas.setBounds(50,10,100,20);
