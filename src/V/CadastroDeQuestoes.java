@@ -26,10 +26,7 @@ public class CadastroDeQuestoes extends JFrame{
 	public CadastroDeQuestoes(CadastrarQuestao controle, Tema[] listaTemas){
 
 		cadastrarQuestao = controle;
-		//Janela
-		setBounds(200, 200, 280, 300);
-		setTitle("JFórum 1.0 - Cadastro de Temas");
-		String[] strListaTemas;
+
 		//Criar Array de String para Popular ComboBox
 		if((listaTemas != null) &&(listaTemas.length > 0)){
 			strListaTemas = new String[listaTemas.length];
@@ -37,10 +34,13 @@ public class CadastroDeQuestoes extends JFrame{
 				strListaTemas[i] = listaTemas[i].getTema();
 			}
 		}else {
-			System.out.print("Aviso: Não é possivel adicionar uma questão tem Tema.\n");
+			System.out.print("Aviso: Nao e possivel adicionar uma questao sem Tema.\n");
 			return;
-		}
-
+		}	
+		//Janela
+		setBounds(200, 200, 280, 300);
+		setTitle("JFórum 1.0 - Cadastro de Temas");
+		String[] strListaTemas;
 		//ComboBox Temas
 		comboListaTemas = new JComboBox(strListaTemas);
 		comboListaTemas.setBounds(50,10,100,20);
@@ -64,16 +64,12 @@ public class CadastroDeQuestoes extends JFrame{
 				btnSalvar();
 			}
 		});
-
-
-
 		//Adicionar Componentes na View.
 		add(comboListaTemas);
 		add(lbTemas);
 		add(txtQuestao);
 		add(lbQuestao);
 		add(btnSalvar);
-
 		//Configurar Layout
 		setLayout(null);
 		setResizable(false);
@@ -84,25 +80,15 @@ public class CadastroDeQuestoes extends JFrame{
 		String tTema = (String)comboListaTemas.getSelectedItem();
 		String tQuestao = txtQuestao.getText();
 		if(tTema == null){
-			System.out.print("Aviso: Você deve selecionar um Tema!");
+			System.out.print("Aviso: Voce deve selecionar um Tema!\n");
 			return;
 		}
 		if(tQuestao == null){
-			System.out.print("Aviso: Você deve digitar uma Questão!");
+			System.out.print("Aviso: Voce deve digitar uma Questao!\n");
 			return;
 		}
 
 		cadastrarQuestao.gravarQuestao(tTema,tQuestao);
-		//for (int i=0;i<listaTemas.length;i++){
-		//	System.out.println("["+(i+1)+"] "+listaTemas[i]);
-		//}
-		//System.out.println("\nEscolha o tema deejado:");
-		//Scanner scan = new Scanner(System.in);
-		//int numTema = scan.nextInt();
-		//System.out.print("\nDigite sua questão:");
-		//String questaoTxt = scan.nextLine();
-		//String temaTxt = listaTemas[numTema-1].getTema();
-		//cadastrarQuestao.gravarQuestao(temaTxt,questaoTxt);
 	}
 
 	public void gravarQuestao(){
