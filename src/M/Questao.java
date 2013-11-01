@@ -6,9 +6,9 @@ public class Questao {
 	private String questaoTexto;
 
 
-	public Questao(Tema tema, String texto){
-		questaoTema = tema;
-		questaoTexto = texto;
+	public Questao(Tema lTema, String lQuestaoTexto){
+		questaoTema = lTema;
+		questaoTexto = lQuestaoTexto;
 	}
 
 	public void add(){
@@ -18,10 +18,10 @@ public class Questao {
 	public void getListaRespostas(){
 
 	}
+	//Obter Propriedades
 	public Tema getTema(){
 		return questaoTema;
 	}
-
 	public String getTexto(){
 		return questaoTexto;
 	}
