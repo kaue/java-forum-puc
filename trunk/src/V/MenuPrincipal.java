@@ -22,19 +22,19 @@ public class MenuPrincipal extends JFrame{
 
 		setBounds(200, 200, 400, 350);
 		setTitle("JFórum 1.0 - Menu Principal");
-
+		//View CadastroDeTemas
 		cadastrarTema = new JButton("Cadastrar Tema");
 		cadastrarTema.setBounds(100, 90, 200, 20);
-
+		//View CadastroDeQuestoes
 		cadastrarQuestao = new JButton("Cadastrar Questão");
 		cadastrarQuestao.setBounds(100, 130, 200, 20);
-
+		//View TODO
 		cadastrarResposta = new JButton("Cadastrar Resposta");
 		cadastrarResposta.setBounds(100, 170, 200, 20);
-
+		//View TODO
 		verForum = new JButton("Visualizar Fórum");
 		verForum.setBounds(100, 210, 200, 20);
-
+		//Botão Sair
 		sair = new JButton("Sair");
 		sair.setBounds(100, 250, 200, 20);
 
@@ -72,13 +72,13 @@ public class MenuPrincipal extends JFrame{
 				dispose();
 			}
 		});
-
+		//Adicionar Componentes na View.
 		add(cadastrarTema);
 		add(cadastrarQuestao);
 		add(cadastrarResposta);
 		add(verForum);
 		add(sair);
-
+		//Configurar Layout
 		setLayout(null);
 		setResizable(false);
 		setVisible(true);

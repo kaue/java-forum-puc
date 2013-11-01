@@ -58,7 +58,7 @@ public class CadastroDeTemas extends JFrame{
 		if(!txtTema.getText().equals("")){
 			gravarTema(txtTema.getText());
 		}else {
-			System.out.print("Aviso: Não é possivel adicionar um tema sem texto.\n");
+			System.out.print("Aviso: Nao e possivel adicionar um tema sem nome.\n");
 		}
 	}
 	public void gravarTema(String lTextoTema){
