@@ -6,8 +6,6 @@ import java.util.List;
 public class Forum {
 
 	private Tema[] listaTemas;
-	private Questao[] listaQuestoes;
-	private Resposta[] listaRespostas;
 
 	public Forum(){
 
@@ -20,10 +18,10 @@ public class Forum {
 	 */
 	public Tema buscaTema(String lTemaTexto){
 		int i = 0;
-		while ((i<listaTemas.length) && !listaTemas[i].getTema().equals(lTemaTexto)){
+		while ((i<listaTemas.length) && !listaTemas[i].getTexto().equals(lTemaTexto)){
 			i++;
 		}
-		if(listaTemas[i].getTema().equals(lTemaTexto)) {
+		if(listaTemas[i].getTexto().equals(lTemaTexto)) {
 			return listaTemas[i];
 		}else {
 			return null;

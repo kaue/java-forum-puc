@@ -32,7 +32,7 @@ public class CadastroDeQuestoes extends JFrame{
 		if((listaTemas != null) &&(listaTemas.length > 0)){
 			strListaTemas = new String[listaTemas.length];
 			for (int i=0;i<listaTemas.length;i++){
-				strListaTemas[i] = listaTemas[i].getTema();
+				strListaTemas[i] = listaTemas[i].getTexto();
 			}
 		}else {
 			System.out.print("Aviso: Nao e possivel adicionar uma questao sem Tema.\n");
