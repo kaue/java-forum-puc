@@ -2,9 +2,8 @@ package M;
 
 public class Questao {
 
-	private Tema questaoTema;
 	private String questaoTexto;
-
+	private Resposta[] listaResposta;
 
 	public Questao(Tema lTema, String lQuestaoTexto){
 		questaoTema = lTema;

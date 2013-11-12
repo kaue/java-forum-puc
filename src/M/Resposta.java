@@ -2,8 +2,6 @@ package M;
 
 public class Resposta {
 
-	private Tema respostaTema;
-	private Questao respostaQuestao;
 	private String respostaTexto;
 
 	public Resposta(Tema lTema, Questao lQuestao, String lRespostaTexto){

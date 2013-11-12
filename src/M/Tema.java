@@ -3,6 +3,7 @@ package M;
 public class Tema {
 
 	private String temaTxt;
+	private Questao[] listaQuestoes;
 
 	public Tema(String lTemaTexto){
 		temaTxt = lTemaTexto;
@@ -20,7 +21,7 @@ public class Tema {
 
 	}
 	//Obter Propriedades
-	public String getTema(){
+	public String getTexto(){
 		return temaTxt;
 	}
 
