@@ -22,11 +22,11 @@ public class CadastroDeRespostas extends JFrame{
 	private JLabel lbResposta;
 	private JTextArea txtResposta;
 
-	private Questao[] listaQuestoes;
+	private final Tema[] listaTemas;
 
-	public CadastroDeRespostas(CadastrarResposta lControle, Tema[] lListaTemas, Questao[] lListaQuestoes){
-		listaQuestoes = lListaQuestoes;
+	public CadastroDeRespostas(CadastrarResposta lControle, Tema[] lListaTemas){
 		cadastrarResposta = lControle;
+		listaTemas = lListaTemas;
 		String[] strListaTemas;
 		//Criar Array de String para Popular ComboBox
 		if((lListaTemas != null) &&(lListaTemas.length > 0)){
@@ -38,11 +38,6 @@ public class CadastroDeRespostas extends JFrame{
 			JOptionPane.showMessageDialog(null,"Aviso: Nao e possivel adicionar uma resposta sem Tema.\n","Resposta",JOptionPane.WARNING_MESSAGE);
 			return;
 		}
-
-		if((lListaQuestoes == null) && (lListaQuestoes.length == 0)){
-			System.out.print("Aviso: Nao e possivel adicionar uma resposta sem Questao.\n");
-		}
-
 		//Janela
 		setBounds(200, 200, 280, 300);
 		setTitle("JFórum 1.0 - Cadastro de Resposta");
@@ -56,7 +51,8 @@ public class CadastroDeRespostas extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox)e.getSource();
-        		String temaSelecionado = (String)cb.getSelectedItem();
+				int index = cb.getSelectedIndex();
+        		Tema temaSelecionado = listaTemas[index];
         		PreencherComboQuestoes(temaSelecionado);
 			}
 		});
@@ -94,34 +90,33 @@ public class CadastroDeRespostas extends JFrame{
 		setLayout(null);
 		setResizable(false);
 		setVisible(true);
+
+		//Preencher Questoes primeiro Tema
+		Tema temaSelecionado = listaTemas[0];
+		PreencherComboQuestoes(temaSelecionado);
 	}
 
-	private void PreencherComboQuestoes(String lTemaSelecionado){
+	private void PreencherComboQuestoes(Tema lTemaSelecionado){
 		comboListaQuestoes.removeAllItems();
-		for (int i=0;i<listaQuestoes.length;i++){
-			if(listaQuestoes[i].getTema().getTexto() == lTemaSelecionado){
-				comboListaQuestoes.addItem(listaQuestoes[i].getTexto());
-			}
-		}
+		Questao[] listaQuestoes = lTemaSelecionado.getListaQuestoes();
+		for (int i=0;i<listaQuestoes.length;i++)
+			comboListaQuestoes.addItem(listaQuestoes[i].getTexto());
 	}
 
 	private void btnSalvar(){
-//		String tTema = (String)comboListaTemas.getSelectedItem();
-//		String tQuestao = txtQuestao.getText();
-//		if(tTema == null){
-//			System.out.print("Aviso: Voce deve selecionar um Tema!\n");
-//			return;
-//		}
-//		if(tQuestao == null){
-//			System.out.print("Aviso: Voce deve digitar uma Questao!\n");
-//			return;
-//		}
-//
-//		cadastrarResposta.gravarQuestao(tTema,tQuestao);
+		Tema temaSelecionado = listaTemas[comboListaTemas.getSelectedIndex()];
+		String txtQuestao = (String)comboListaQuestoes.getSelectedItem();
+		Questao questaoSelecionada = temaSelecionado.buscaQuestao(txtQuestao);
+		String tResposta = txtResposta.getText();
+		//if(tTema == null){
+		//	System.out.print("Aviso: Voce deve selecionar um Tema!\n");
+		//	return;
+		//}
+		//if(tQuestao == null){
+		//	System.out.print("Aviso: Voce deve digitar uma Questao!\n");
+		//	return;
+		//}
+
+		cadastrarResposta.gravarResposta(questaoSelecionada,tResposta);
 	}
-
-	public void gravarQuestao(){
-
-	}
-
 }

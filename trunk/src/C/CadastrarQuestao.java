@@ -18,8 +18,7 @@ public class CadastrarQuestao {
 
 	public void gravarQuestao(String lTema, String lQuestaoTexto){
 		Tema tema = forum.buscaTema(lTema);
-		Questao questao = new Questao(tema, lQuestaoTexto);
-		forum.addQuestao(questao);
-
+		Questao questao = new Questao(lQuestaoTexto);
+		tema.addQuestao(questao);
 	}
 }

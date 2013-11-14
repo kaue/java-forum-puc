@@ -15,15 +15,13 @@ public class CadastrarResposta {
 	public CadastrarResposta(Forum lForum){
 		forum = lForum;
 		Tema[] listaTemas = forum.getListaTemas();
-		Questao[] listaQuestoes = forum.getListaQuestoes();
-		vCadastroDeRespostas = new CadastroDeRespostas(this, listaTemas, listaQuestoes);
+		vCadastroDeRespostas = new CadastroDeRespostas(this, listaTemas);
 	}
 
-	public void gravarResposta(String lTema, String lQuestao, String lResposta){
-		Tema tema = forum.buscaTema(lTema);
-		Questao questao = forum.buscaQuestao(lTema,lQuestao);
-		Resposta resposta = new Resposta(tema, questao, lResposta);
-		forum.addResposta(resposta);
-
+	public void gravarResposta(Questao lQuestao, String lResposta){
+		//Tema tema = forum.buscaTema(lTema);
+		//Questao questao = tema.buscaQuestao(lQuestao);
+		Resposta resposta = new Resposta(lResposta);
+		lQuestao.addResposta(resposta);
 	}
 }
