@@ -1,7 +1,9 @@
 package C;
 
 import M.Forum;
+import M.Tema;
 import V.MenuPrincipal;
+import V.ConsultaDoForum;
 
 public class AppController {
 
@@ -10,6 +12,8 @@ public class AppController {
 	private CadastrarTema cCadastrarTema;
 	private CadastrarQuestao cCadastrarQuestao;
 	private CadastrarResposta cCadastrarResposta;
+
+	private ConsultaDoForum vConsultaDoForum;
 
 	private Forum forum;
 
@@ -35,6 +39,8 @@ public class AppController {
 	}
 
 	public void verForum(){
-		//Todo
+		//Abrir View de Consulta do Forum
+		Tema[] listaTemas = forum.getListaTemas();
+		vConsultaDoForum = new ConsultaDoForum(listaTemas);
 	}
 }
