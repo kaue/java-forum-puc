@@ -2,10 +2,13 @@ package V;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 
@@ -35,29 +38,45 @@ public class CadastroDeQuestoes extends JFrame{
 				strListaTemas[i] = listaTemas[i].getTexto();
 			}
 		}else {
-			System.out.print("Aviso: Nao e possivel adicionar uma questao sem Tema.\n");
+			JOptionPane.showMessageDialog(null, "Não é possível cadastrar uma questão sem antes cadastrar pelo menos um tema!", "Erro", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		//Janela
-		setBounds(200, 200, 280, 300);
-		setTitle("JFórum 1.0 - Cadastro de Temas");
+		setBounds(600, 400, 320, 200);
+		setTitle("JFórum 1.0 - Cadastro de Questões");
 		//ComboBox Temas
 		comboListaTemas = new JComboBox(strListaTemas);
-		comboListaTemas.setBounds(50,10,100,20);
+		comboListaTemas.setBounds(70,10,220,20);
 		//Label Temas
-		lbTemas = new JLabel("Tema");
-		lbTemas.setBounds(0,10,50,20);
+		lbTemas = new JLabel("Tema:");
+		lbTemas.setBounds(20,10,50,20);
 		//TextArea Questao
 		txtQuestao = new JTextArea("Digite sua questão aqui");
 		txtQuestao.setLineWrap(true);
 		txtQuestao.setWrapStyleWord(true);
-		txtQuestao.setBounds(50, 40, 200, 60);
+		txtQuestao.setBounds(70, 40, 220, 80);
+		txtQuestao.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if(txtQuestao.getText().equals("")){
+					txtQuestao.setText("Digite sua questão aqui");
+				}
+			}
+
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				if(txtQuestao.getText().equals("Digite sua questão aqui")){
+					txtQuestao.setText("");	
+				}
+			}
+		});
 		//Label Questao
-		lbQuestao = new JLabel("Questão");
-		lbQuestao.setBounds(0,40,80,20);
+		lbQuestao = new JLabel("Questão:");
+		lbQuestao.setBounds(20,40,80,20);
 		//Button Salvar
 		btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 120, 260, 20);
+		btnSalvar.setBounds(70, 140, 220, 20);
 		btnSalvar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,20 +98,13 @@ public class CadastroDeQuestoes extends JFrame{
 	private void btnSalvar(){
 		String tTema = (String)comboListaTemas.getSelectedItem();
 		String tQuestao = txtQuestao.getText();
-		if(tTema == null){
-			System.out.print("Aviso: Voce deve selecionar um Tema!\n");
+		if(tQuestao.equals("Digite sua questão aqui")){
+			JOptionPane.showMessageDialog(null, "Digite sua questão!", "Erro", JOptionPane.ERROR_MESSAGE);
 			return;
+		} else {
+			cadastrarQuestao.gravarQuestao(tTema,tQuestao);
+			JOptionPane.showMessageDialog(null, "Questão cadastrada com sucesso!");
+			dispose();
 		}
-		if(tQuestao == null){
-			System.out.print("Aviso: Voce deve digitar uma Questao!\n");
-			return;
-		}
-
-		cadastrarQuestao.gravarQuestao(tTema,tQuestao);
 	}
-
-	public void gravarQuestao(){
-
-	}
-
 }

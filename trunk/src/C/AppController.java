@@ -1,5 +1,7 @@
 package C;
 
+import java.io.IOException;
+
 import M.Forum;
 import M.Tema;
 import V.MenuPrincipal;
@@ -17,7 +19,7 @@ public class AppController {
 
 	private Forum forum;
 
-	public AppController(){
+	public AppController() throws IOException{
 		//Iniciar Programa e abrir Menu Principal
 		forum = new Forum();
 		vMenuPrincipal = new MenuPrincipal(this);
@@ -38,7 +40,7 @@ public class AppController {
 		cCadastrarResposta = new CadastrarResposta(forum);
 	}
 
-	public void verForum(){
+	public void consultarForum(){
 		//Abrir View de Consulta do Forum
 		Tema[] listaTemas = forum.getListaTemas();
 		vConsultaDoForum = new ConsultaDoForum(listaTemas);

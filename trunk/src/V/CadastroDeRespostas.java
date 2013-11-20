@@ -2,6 +2,8 @@ package V;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
@@ -35,18 +37,18 @@ public class CadastroDeRespostas extends JFrame{
 				strListaTemas[i] = lListaTemas[i].getTexto();
 			}
 		}else {
-			JOptionPane.showMessageDialog(null,"Aviso: Nao e possivel adicionar uma resposta sem Tema.\n","Resposta",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Não é possível cadastrar uma resposta sem antes cadastrar uma questão!", "Erro", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		//Janela
-		setBounds(200, 200, 280, 300);
+		setBounds(600, 400, 320, 250);
 		setTitle("JFórum 1.0 - Cadastro de Resposta");
 		//Label Temas
-		lbTemas = new JLabel("Tema");
-		lbTemas.setBounds(0,10,50,20);
+		lbTemas = new JLabel("Tema:");
+		lbTemas.setBounds(20,10,50,20);
 		//ComboBox Temas
 		comboListaTemas = new JComboBox(strListaTemas);
-		comboListaTemas.setBounds(50,10,100,20);
+		comboListaTemas.setBounds(90,10,200,20);
 		comboListaTemas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -57,22 +59,38 @@ public class CadastroDeRespostas extends JFrame{
 			}
 		});
 		//Label Questoes
-		lbQuestoes = new JLabel("Questoes");
-		lbQuestoes.setBounds(0,40,50,20);
+		lbQuestoes = new JLabel("Questão:");
+		lbQuestoes.setBounds(20,40,70,20);
 		//ComboBox Questoes
 		comboListaQuestoes = new JComboBox(new String[] {"Selecione um Tema!"});
-		comboListaQuestoes.setBounds(50,40,100,20);
+		comboListaQuestoes.setBounds(90,40,200,20);
 		//TextArea Questao
 		txtResposta = new JTextArea("Digite sua resposta aqui");
 		txtResposta.setLineWrap(true);
 		txtResposta.setWrapStyleWord(true);
-		txtResposta.setBounds(50, 80, 200, 60);
+		txtResposta.setBounds(20, 80, 270, 100);
+		txtResposta.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if(txtResposta.getText().equals("")){
+					txtResposta.setText("Digite sua resposta aqui");
+				}
+			}
+
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				if(txtResposta.getText().equals("Digite sua resposta aqui")){
+					txtResposta.setText("");	
+				}
+			}
+		});
 		//Label Questao
 		lbResposta = new JLabel("Resposta");
-		lbResposta.setBounds(0,80,80,20);
+		lbResposta.setBounds(20,80,80,20);
 		//Button Salvar
 		btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 120, 260, 20);
+		btnSalvar.setBounds(20, 190, 270, 20);
 		btnSalvar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -118,5 +136,7 @@ public class CadastroDeRespostas extends JFrame{
 		//}
 
 		cadastrarResposta.gravarResposta(questaoSelecionada,tResposta);
+		JOptionPane.showMessageDialog(null, "Resposta cadastrada com sucesso!");
+		dispose();
 	}
 }
