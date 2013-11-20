@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 
 import C.CadastrarTema;
-import C.AppController;
 
 public class CadastroDeTemas extends JFrame{
 
@@ -25,17 +25,17 @@ public class CadastroDeTemas extends JFrame{
 	public CadastroDeTemas(CadastrarTema controle){
 		cadastrarTema = controle;
 		//Janela
-		setBounds(200, 200, 300, 120);
+		setBounds(600, 400, 320, 120);
 		setTitle("JFórum 1.0 - Cadastro de Temas");
 		//Label Tema
 		lbTema = new JLabel("Tema:");
-		lbTema.setBounds(0,10,100,20);
+		lbTema.setBounds(20,10,50,20);
 		//TextField Tema
 		txtTema = new JTextField(20);
-		txtTema.setBounds(50, 10, 200, 20);
+		txtTema.setBounds(70, 10, 200, 20);
 		//Button Salvar
 		btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(50, 50, 200, 20);
+		btnSalvar.setBounds(70, 50, 200, 20);
 		btnSalvar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -57,8 +57,10 @@ public class CadastroDeTemas extends JFrame{
 		//Validar campo
 		if(!txtTema.getText().equals("")){
 			gravarTema(txtTema.getText());
+			JOptionPane.showMessageDialog(null, "Tema cadastrado com sucesso!");
+			dispose();
 		}else {
-			System.out.print("Aviso: Nao e possivel adicionar um tema sem nome.\n");
+			JOptionPane.showMessageDialog(null, "Digite o nome do tema!", "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	public void gravarTema(String lTextoTema){
