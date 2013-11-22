@@ -42,7 +42,8 @@ public class CadastroDeQuestoes extends JFrame{
 			return;
 		}
 		//Janela
-		setBounds(600, 400, 320, 200);
+		//setBounds(600, 400, 320, 200);
+		setBounds(600, 400, 400, 400);
 		setTitle("JFórum 1.0 - Cadastro de Questões");
 		//ComboBox Temas
 		comboListaTemas = new JComboBox(strListaTemas);

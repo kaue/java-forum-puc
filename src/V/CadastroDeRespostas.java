@@ -31,17 +31,24 @@ public class CadastroDeRespostas extends JFrame{
 		listaTemas = lListaTemas;
 		String[] strListaTemas;
 		//Criar Array de String para Popular ComboBox
+		int numeroQuestoes = 0;
 		if((lListaTemas != null) &&(lListaTemas.length > 0)){
 			strListaTemas = new String[lListaTemas.length];
 			for (int i=0;i<lListaTemas.length;i++){
+				numeroQuestoes += lListaTemas[i].getListaQuestoes().length;
 				strListaTemas[i] = lListaTemas[i].getTexto();
 			}
 		}else {
+			JOptionPane.showMessageDialog(null,"Não é possível cadastrar uma resposta sem antes cadastrar um tema!", "Erro", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if(numeroQuestoes== 0){
 			JOptionPane.showMessageDialog(null,"Não é possível cadastrar uma resposta sem antes cadastrar uma questão!", "Erro", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		//Janela
-		setBounds(600, 400, 320, 250);
+		//setBounds(600, 400, 320, 250);
+		setBounds(600, 400, 400, 400);
 		setTitle("JFórum 1.0 - Cadastro de Resposta");
 		//Label Temas
 		lbTemas = new JLabel("Tema:");

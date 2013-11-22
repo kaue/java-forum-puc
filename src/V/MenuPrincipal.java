@@ -3,10 +3,9 @@ package V;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +16,6 @@ import C.AppController;
 public class MenuPrincipal extends JFrame{
 
 	private AppController appController;
-	private ImageIcon img;
 	private JLabel lbLogo;
 	private JButton cadastrarTema;
 	private JButton cadastrarQuestao;
@@ -27,39 +25,48 @@ public class MenuPrincipal extends JFrame{
 
 	public MenuPrincipal(AppController controle) throws IOException{
 		appController = controle;
-
-		setBounds(600, 400, 400, 350);
+		
+		//Janela
+		setBounds(600, 400, 400, 400);
 		setTitle("JFórum 1.0 - Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
-		BufferedImage img = ImageIO.read(getClass().getResource("../include/logoPuc.jpg"));
 		
-		//Logo PUC
+		//Logo PUC	
+		BufferedImage img = ImageIO.read(getClass().getResource("../include/logoPuc.jpg"));	
 		lbLogo = new JLabel(new ImageIcon(img));
 		lbLogo.setBounds(0, 0, 400, 90);
 		
-		//BufferedImage img = ImageIO.read(getClass().getResource("../include/logoPuc.jpg"));
-		
 		//View CadastroDeTemas
-		//cadastrarTema = new JButton(new ImageIcon(getClass().getResource("../include/btnResposta.png")));
-		cadastrarTema = new JButton("Cadastrar Tema");
-		cadastrarTema.setBounds(100, 90, 200, 20);
-		//cadastrarTema.setOpaque(false);
-		//cadastrarTema.setContentAreaFilled(false);
-		//cadastrarTema.setBorderPainted(false);
+		cadastrarTema = new JButton(new ImageIcon(getClass().getResource("../include/btnTema.png")));
+		cadastrarTema.setBounds(0, 90, 128, 128);
+		cadastrarTema.setOpaque(false);
+		cadastrarTema.setContentAreaFilled(false);
+		cadastrarTema.setBorderPainted(false);
 		//View CadastroDeQuestoes
-		cadastrarQuestao = new JButton("Cadastrar Questão");
-		cadastrarQuestao.setBounds(100, 150, 200, 20);
-		//View TODO
-		cadastrarResposta = new JButton("Cadastrar Resposta");
-		cadastrarResposta.setBounds(100, 190, 200, 20);
-		//View TODO
-		consultarForum = new JButton("Consultar Fórum");
-		consultarForum.setBounds(100, 230, 200, 20);
+		cadastrarQuestao = new JButton(new ImageIcon(getClass().getResource("../include/btnPergunta.png")));
+		cadastrarQuestao.setBounds(128, 90, 128, 128);
+		cadastrarQuestao.setOpaque(false);
+		cadastrarQuestao.setContentAreaFilled(false);
+		cadastrarQuestao.setBorderPainted(false);
+		//View CadastroDeRespostas
+		cadastrarResposta = new JButton(new ImageIcon(getClass().getResource("../include/btnResposta.png")));
+		cadastrarResposta.setBounds(256, 90, 128, 128);
+		cadastrarResposta.setOpaque(false);
+		cadastrarResposta.setContentAreaFilled(false);
+		cadastrarResposta.setBorderPainted(false);
+		//View ConsultaDoForum
+		consultarForum = new JButton(new ImageIcon(getClass().getResource("../include/btnForum.png")));
+		consultarForum.setBounds(0, 218, 128, 128);
+		consultarForum.setOpaque(false);
+		consultarForum.setContentAreaFilled(false);
+		consultarForum.setBorderPainted(false);
 		//Botão Sair
-		sair = new JButton("Sair");
-		sair.setBounds(100, 270, 200, 20);
-
+		sair = new JButton(new ImageIcon(getClass().getResource("../include/btnSair.png")));
+		sair.setBounds(128, 218, 128, 128);
+		sair.setOpaque(false);
+		sair.setContentAreaFilled(false);
+		sair.setBorderPainted(false);	
+		
 		cadastrarTema.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
