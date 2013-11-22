@@ -49,7 +49,8 @@ public class ConsultaDoForum extends JFrame{
 		}
 
 		//Janela
-		setBounds(600, 400, 800, 600);
+		//setBounds(600, 400, 800, 600);
+		setBounds(600, 400, 400, 400);
 		setTitle("JFórum 1.0 - Consultar Fórum");
 
 

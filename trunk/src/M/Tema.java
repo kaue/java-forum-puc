@@ -7,6 +7,7 @@ public class Tema {
 
 	public Tema(String lTemaTexto){
 		temaTxt = lTemaTexto;
+		listaQuestoes = new Questao[0];
 	}
 
 	//Questao
