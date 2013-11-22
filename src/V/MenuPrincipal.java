@@ -31,17 +31,22 @@ public class MenuPrincipal extends JFrame{
 		setBounds(600, 400, 400, 350);
 		setTitle("JFórum 1.0 - Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				
-		String path = "img/logoPuc.jpg";
-		File arq = new File(path);
-		BufferedImage img = ImageIO.read(arq);
+			
+		BufferedImage img = ImageIO.read(getClass().getResource("../include/logoPuc.jpg"));
 		
+		//Logo PUC
 		lbLogo = new JLabel(new ImageIcon(img));
-		lbLogo.setBounds(0, 0, 400, 89);
+		lbLogo.setBounds(0, 0, 400, 90);
+		
+		//BufferedImage img = ImageIO.read(getClass().getResource("../include/logoPuc.jpg"));
 		
 		//View CadastroDeTemas
+		//cadastrarTema = new JButton(new ImageIcon(getClass().getResource("../include/btnResposta.png")));
 		cadastrarTema = new JButton("Cadastrar Tema");
-		cadastrarTema.setBounds(100, 110, 200, 20);
+		cadastrarTema.setBounds(100, 90, 200, 20);
+		//cadastrarTema.setOpaque(false);
+		//cadastrarTema.setContentAreaFilled(false);
+		//cadastrarTema.setBorderPainted(false);
 		//View CadastroDeQuestoes
 		cadastrarQuestao = new JButton("Cadastrar Questão");
 		cadastrarQuestao.setBounds(100, 150, 200, 20);
