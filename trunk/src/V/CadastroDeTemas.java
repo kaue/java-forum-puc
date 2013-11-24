@@ -40,8 +40,6 @@ public class CadastroDeTemas extends JFrame{
 			lbLogo = new JLabel(new ImageIcon(img));
 			lbLogo.setBounds(0, 0, 400, 90);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}	
 		
 		

@@ -14,12 +14,18 @@ import javax.swing.JLabel;
 
 import C.CadastrarQuestao;
 import M.Tema;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class CadastroDeQuestoes extends JFrame{
 
 	private CadastrarQuestao cadastrarQuestao;
 
 	//Componentes Swing
+        private JLabel lbLogo;
+        private JButton btnVoltar;
 	private JComboBox comboListaTemas;
 	private JButton btnSalvar;
 	private JLabel lbTemas;
@@ -42,20 +48,29 @@ public class CadastroDeQuestoes extends JFrame{
 			return;
 		}
 		//Janela
+                
+                BufferedImage img;
+		try {
+			img = ImageIO.read(getClass().getResource("../include/logoPuc.jpg"));
+			lbLogo = new JLabel(new ImageIcon(img));
+			lbLogo.setBounds(0, 0, 400, 90);
+		} catch (IOException e1) {
+		}	
+                
 		//setBounds(600, 400, 320, 200);
 		setBounds(600, 400, 400, 400);
 		setTitle("JFórum 1.0 - Cadastro de Questões");
 		//ComboBox Temas
 		comboListaTemas = new JComboBox(strListaTemas);
-		comboListaTemas.setBounds(70,10,220,20);
+		comboListaTemas.setBounds(70,100,220,20);
 		//Label Temas
 		lbTemas = new JLabel("Tema:");
-		lbTemas.setBounds(20,10,50,20);
+		lbTemas.setBounds(20,100,50,20);
 		//TextArea Questao
 		txtQuestao = new JTextArea("Digite sua questão aqui");
 		txtQuestao.setLineWrap(true);
 		txtQuestao.setWrapStyleWord(true);
-		txtQuestao.setBounds(70, 40, 220, 80);
+		txtQuestao.setBounds(70, 130, 220, 80);
 		txtQuestao.addFocusListener(new FocusListener() {
 
 			@Override
@@ -74,17 +89,36 @@ public class CadastroDeQuestoes extends JFrame{
 		});
 		//Label Questao
 		lbQuestao = new JLabel("Questão:");
-		lbQuestao.setBounds(20,40,80,20);
+		lbQuestao.setBounds(20,130,80,20);
 		//Button Salvar
-		btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(70, 140, 220, 20);
+                btnSalvar = new JButton(new ImageIcon(getClass().getResource("../include/btnSalvar.png")));
+		btnSalvar.setBounds(272, 230, 128, 128);
+		btnSalvar.setOpaque(false);
+		btnSalvar.setContentAreaFilled(false);
+		btnSalvar.setBorderPainted(false);
+                
+                btnVoltar = new JButton(new ImageIcon(getClass().getResource("../include/btnVoltar.png")));
+		btnVoltar.setBounds(0, 230, 128, 128);
+		btnVoltar.setOpaque(false);
+		btnVoltar.setContentAreaFilled(false);
+		btnVoltar.setBorderPainted(false);
+                
 		btnSalvar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				btnSalvar();
 			}
 		});
+                
+                btnVoltar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
 		//Adicionar Componentes na View.
+                add(lbLogo);
+                add(btnVoltar);
 		add(comboListaTemas);
 		add(lbTemas);
 		add(txtQuestao);
